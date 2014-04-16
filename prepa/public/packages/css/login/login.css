@@ -1,0 +1,32 @@
+/*
+	LOGIN FORM
+*/
+#contenedorLogin{
+	padding: .25em;
+}
+
+#botonLogin{
+	margin: 0;
+}
+
+/*
+	SECCIÓN DE AVISOS
+*/
+
+#contenedorAvisos{
+	padding: .5em;
+}
+
+/*
+	SECCIÓN DE ASOCIACIONES
+*/
+#contenedorAsociaciones{
+	padding: .5em;
+}
+
+/*
+	SECCIÓN DE CONTACTO
+*/
+#contenedorContacto{
+	padding: .5em;
+}
