@@ -15,7 +15,7 @@ return array(
 	|
 	*/
 
-	'driver' => 'eloquent',
+	'driver' => 'eloquent',/*Se debe cambiar el modelo se User.php*/
 
 	/*
 	|--------------------------------------------------------------------------

@@ -56,12 +56,7 @@
 	</div>
 	<div>
 		<h2>
-			<?php
 
-				echo Form::open(array('url' => 'registro')) ;
-                                		echo Form::button('inscripcion', array('class' => 'ink-button green', 'value' => 'hello', 'name' => 'inscripcion'));
-    			echo  Form::close() ;
-			?>
 
 		</h2>
 

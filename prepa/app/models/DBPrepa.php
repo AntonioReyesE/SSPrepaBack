@@ -76,8 +76,9 @@ class DBPrepa {
                                 <td>'.$variable[$i]->descripcion.'</td>
                                 <td>'.$variable[$i]->cupo.'</td>
                                 <td>');
+			/*Forma de declarar un boton de submit con otro valor*/
 			echo Form::open(array('url' => 'registro', 'method' => 'get'));
-            echo Form::submit($variable[$i]->idProyectos, array('class' => 'ink-button green', 'value' => $variable[$i]->idProyectos, 'name' => 'inscripcion'));
+            echo Form::button('inscribir', array('class' => 'ink-button green', 'value' => $variable[$i]->idProyectos, 'name' => 'inscripcion', 'type' => 'submit'));
     		echo Form::close(); 
     		print('</td> </tr>');
 			$i++;
