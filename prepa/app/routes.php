@@ -18,17 +18,25 @@ Route::get('hello', function()
 
 Route::get('/', 'HomeController@showIndex');
 
+Route::get('/index', 'HomeController@showIndex');
+
 Route::get('/registro', 'HomeController@showRegistro');
 
-//Route::post('registro', 'HomeController@showRegistroAuth');
+Route::get('/inscrito', 'HomeController@inscrito');
+
+Route::get('/cupolleno', 'HomeController@cupolleno');
+
+Route::get('/historial', 'HomeController@showHistorial');
+
+Route::get('/avisos', 'HomeController@showAvisos');
+
+Route::get('/reportes', 'HomeController@showReportes');
 
 Route::post('/registro', function()
 {
         /* Get the login form data using the 'Input' class */
       // $password = Input::get('password');
        // $matricula = Input::get('matricula');
-
-
 
         $userdata = array(
             'matricula' => 'A01224955',

@@ -37,33 +37,35 @@
                     <li class="push-right">
                         <a href="index"><i class="icon-signout"></i> Cerrar sesión</a>
                     </li>
-                    <li class="push-right">
-                        <a href="historial">Historial</a>
-                    </li>
                 </ul>
             </nav>
         </header>
         <div id="contenedor" class="ink-grid">
             <div class="column-group">
-                <div id="contenedorProyectos" class="large-100">
-                    <h4>Registro de poyecto</h4>
+                <div id="contenedorProyectos" class="large-33">
+                    <h4>Generar reporte</h4>
                     <hr>
-                    <table class="ink-table bordered alternating hover" style="font-size:14px">
-                        <thead>
-                            <tr>
-                                <th class="content-left">Proyecto</th>
-                                <th class="content-left">Asociación</th>
-                                <th class="content-left">Descripción</th>
-                                <th class="content-left">Disponibilidad</th>
-                                <th class="content-left">Inscripción</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                             <?php
-                            dbprepa::printTabla();
-                            ?>
-                        </tbody>
-                    </table>
+                    <div>
+                        <label>Periodo: </label>
+                        <select>
+                            <option>Todos los periodos</option>
+                            <option>ENE-MAY 2014</option>
+                            <option>AGO-DIC 2013</option>
+                        </select>
+                        <button class="ink-button">Generar</button>
+                    </div>
+                </div>
+                <div id="contenedorProyectos" class="large-33">
+                    <h4>Historial</h4>
+                    <hr>
+                    <div><button class="ink-button">Historial por alumno</button></div>
+                </div>
+                <div id="contenedorProyectos" class="large-33">
+                    <h4>Otros</h4>
+                    <hr>
+                    <div><button class="ink-button">Agregar institución</button></div>
+                    <div><button class="ink-button">Agregar proyecto</button></div>
+                    <div><button class="ink-button">Administrar avisos</button></div>
                 </div>
             </div>
         </div>

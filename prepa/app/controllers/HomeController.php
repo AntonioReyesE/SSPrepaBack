@@ -29,4 +29,31 @@ class HomeController extends BaseController {
 	{
 		return View::make('registro');
 	}
+
+	public function inscrito()
+	{
+		return View::make('inscrito');
+	}
+
+	public function cupolleno()
+	{
+		return View::make('cupolleno');
+	}
+
+	public function showHistorial()
+	{
+		return View::make('historial');
+	}
+
+	public function showAvisos()
+	{
+		return View::make('avisos');
+	}
+
+	public function showReportes()
+	{
+		return View::make('reportes');
+	}
+
+
 }

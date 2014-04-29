@@ -32,7 +32,7 @@
             <nav class="ink-navigation">
                 <ul class="menu horizontal blue">
                     <li>
-                        <a href="index.php">Portal de Servicio Social</a>
+                        <a href="index">Portal de Servicio Social</a>
                     </li>
                 </ul>
             </nav>

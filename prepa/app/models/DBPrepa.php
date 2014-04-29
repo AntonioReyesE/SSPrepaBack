@@ -45,28 +45,12 @@ class DBPrepa {
 			print('<div><h1>Cupo lleno </h1></div>');
 		}
 	}
-
 	/*
-		Funcion que imprime la tabla de la pantalla de registro de proyectos
-	*//*
+		Funcion que imprime la tabla de registro de proyectos
+	*/
 	public static function printTabla(){
 		$variable = dbprepa::registro();
-		$i = 0;
-		foreach ($variable as $key => $value) {
-			$nom = dbprepa::nombreIns($variable[$i]->idInstitucionfk);
-			print('         <tr>
-                                <td>'.$variable[$i]->nombre.'</td>
-                                <td>'.$nom[0]->nombre.'</td>
-                                <td>'.$variable[$i]->descripcion.'</td>
-                                <td>'.$variable[$i]->cupo.'</td>
-                                <td><form action="registro" method="get"><input class="ink-button green" type="submit" value='.$variable[$i]->idProyectos.'  name="inscripcion"></input> </form></td>
-                            </tr>');
-			$i++;
-		}
-	}*/
-
-	public static function printTabla(){
-		$variable = dbprepa::registro();
+		$cupo = 'inscrito';
 		$i = 0;
 		foreach ($variable as $key => $value) {
 			$nom = dbprepa::nombreIns($variable[$i]->idInstitucionfk);
@@ -76,12 +60,48 @@ class DBPrepa {
                                 <td>'.$variable[$i]->descripcion.'</td>
                                 <td>'.$variable[$i]->cupo.'</td>
                                 <td>');
+			/* Validación de un cupo */
+			if ($variable[$i]->cupo <= 0) {
+				$cupo = 'cupolleno';
+			}
 			/*Forma de declarar un boton de submit con otro valor*/
-			echo Form::open(array('url' => 'registro', 'method' => 'get'));
+			echo Form::open(array('url' => $cupo, 'method' => 'get'));
             echo Form::button('inscribir', array('class' => 'ink-button green', 'value' => $variable[$i]->idProyectos, 'name' => 'inscripcion', 'type' => 'submit'));
     		echo Form::close(); 
     		print('</td> </tr>');
 			$i++;
 		}
+	}
+
+	/*
+		Funcion que imprime el inicio de información de la parte de historial del alumno
+	*/
+	public static function printInfoHistorial($matricula){
+		$infoAlumno = DB::table('Alumno')
+						->where('matricula', '=', $matricula)->get();
+		print('<div class="large-33 contenedorDato">
+                        <span class="campoInfo">Nombre:</span>
+                        <span class="campoDato">'.$infoAlumno[0]->nombre.'</span>
+                    </div>
+                    <div class="large-33 contenedorDato">
+                        <span class="campoInfo">Matricula:</span>
+                        <span class="campoDato">'.$infoAlumno[0]->matricula.'</span>
+                    </div>
+                    <div class="large-33 contenedorDato">
+                        <span class="campoInfo">Semestre:</span>
+                        <span class="campoDato">'.$infoAlumno[0]->semestre.'</span>
+                    </div>
+                    <div class="large-33 contenedorDato">
+                        <span class="campoInfo">Email:</span>
+                        <span class="campoDato">'.$infoAlumno[0]->correo.'</span>
+                    </div>
+                    <div class="large-33 contenedorDato">
+                        <span class="campoInfo">Estatus:</span>
+                        <span class="campoDato">Inscrito</span>
+                    </div>
+                    <div class="large-33 contenedorDato">
+                        <span class="campoInfo">Campus:</span>
+                        <span class="campoDato">GDA</span>
+                    </div>');
 	}
 }

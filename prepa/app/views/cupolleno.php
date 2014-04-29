@@ -43,27 +43,13 @@
                 </ul>
             </nav>
         </header>
-        <div id="contenedor" class="ink-grid">
+        <div class="ink-grid">
             <div class="column-group">
-                <div id="contenedorProyectos" class="large-100">
-                    <h4>Registro de poyecto</h4>
+                <div id="contenedor" class="large-50 push-center">
+                    <h4>Cupo lleno</h4>
                     <hr>
-                    <table class="ink-table bordered alternating hover" style="font-size:14px">
-                        <thead>
-                            <tr>
-                                <th class="content-left">Proyecto</th>
-                                <th class="content-left">Asociación</th>
-                                <th class="content-left">Descripción</th>
-                                <th class="content-left">Disponibilidad</th>
-                                <th class="content-left">Inscripción</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                             <?php
-                            dbprepa::printTabla();
-                            ?>
-                        </tbody>
-                    </table>
+                    <p>El proyecto que has elegido no tiene más lugares para poder inscribirlo.</p>
+                    <p>Da <a href="index">click aquí</a> para regresar</p>
                 </div>
             </div>
         </div>
