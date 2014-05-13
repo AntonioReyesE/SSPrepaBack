@@ -49,8 +49,8 @@
                                 <div class="control">
                                     <!-- Agregados para funciones de php de validación de matricula-->
                                     <?php
-                                    echo Form::open(array('url' => '/registro','method' => 'post')) ;
-                                    echo Form::text('matricula', 'A00XXXXXX', array('id' => 'matricula', 
+                                    echo Form::open(array('url' => '/registro','method' => 'get')) ;
+                                    echo Form::text('matricula', '', array('id' => 'matricula', 'placeholder' => 'A00XXXXXX',
                                         'name' => 'matricula', 'pattern' => '[A|a][0-9]{8}', 'title' => 'La matrícula debe seguir el formato: A00XXXXXX', 'required'));
                                     echo  Form::close() ;
                                     ?>
@@ -78,11 +78,11 @@
                                 if (Input::has('matricula') || Input::has('password')) {
                                     $matricula = Input::get('matricula');
                                     $password = Input::get('password');
-                                    //echo $matricula;
+                                    
                                 }
                                 
                                // echo Form::open(array('url' => array('registro', $matricula)));
-
+                                    
                                 echo Form::open(array('url' => '/registro','method' => 'post')) ;
                                     echo Form::submit('Iniciar sesión', array('url' => 'registro','id' => 'botonLogin', 'class' => 'ink-button blue'));
                                 echo  Form::close() ;

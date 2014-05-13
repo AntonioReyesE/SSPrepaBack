@@ -14,7 +14,7 @@ class DBPrepa {
 
 	public static function registro()
 	{
-		$res = DB::select('select idProyectos, idInstitucionfk,nombre, descripcion, cupo from Proyectos');
+		$res = DB::select('select idProyectos, idInstitucionfk,nombreProy, descripcion, cupo from Proyectos');
 		return $res;
 	}
 
@@ -24,7 +24,7 @@ class DBPrepa {
 	public static function nombreIns($id)
 	{
 		$users = DB::table('Institucion')
-					->select('nombre')
+					->select('nombreInst')
 						->where('idInstitucion', '=', $id)->get();
 		return $users;
 	}
@@ -55,8 +55,8 @@ class DBPrepa {
 		foreach ($variable as $key => $value) {
 			$nom = dbprepa::nombreIns($variable[$i]->idInstitucionfk);
 			print('         <tr>
-                                <td>'.$variable[$i]->nombre.'</td>
-                                <td>'.$nom[0]->nombre.'</td>
+                                <td>'.$variable[$i]->nombreProy.'</td>
+                                <td>'.$nom[0]->nombreInst.'</td>
                                 <td>'.$variable[$i]->descripcion.'</td>
                                 <td>'.$variable[$i]->cupo.'</td>
                                 <td>');
@@ -103,5 +103,27 @@ class DBPrepa {
                         <span class="campoInfo">Campus:</span>
                         <span class="campoDato">GDA</span>
                     </div>');
+	}
+
+	public static function reporteGeneral()
+	{
+		/*
+		$users = DB::select('SELECT i.idInstitucion, p.idInstitucionfk, p.nombre 
+			FROM Institucion i, Proyectos p 
+			WHERE i.idInstitucion = p.idInstitucion');
+		$users = DB::table('Institucion')
+        ->join('Proyectos', function($join)
+        {
+            $join->on('Institucion.idInstitucion', '=', 'Proyectos.idInstitucionfk');
+
+        })*/
+
+        $users = DB::table('Institucion')
+            ->join('Proyectos','Institucion.idInstitucion', '=', 'Proyectos.idInstitucionfk')
+            ->join('ProyectosAlumno', 'ProyectosAlumno.idproyectosfk', '=', 'Proyectos.idProyectos')
+            ->join('Alumno', 'Alumno.matricula', '=', 'ProyectosAlumno.matriculaAlumnofk')
+            ->select('Alumno.nombre', 'Alumno.matricula', 'Institucion.nombreInst', 'Proyectos.nombreProy', 'Alumno.correo', 'Alumno.telefono')
+            ->get();
+   		 return $users;
 	}
 }

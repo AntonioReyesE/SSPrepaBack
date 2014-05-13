@@ -52,20 +52,30 @@
                             <option>ENE-MAY 2014</option>
                             <option>AGO-DIC 2013</option>
                         </select>
-                        <button class="ink-button">Generar</button>
+                        <a href="generareporte" class="ink-button">Generar</a>
                     </div>
                 </div>
                 <div id="contenedorProyectos" class="large-33">
                     <h4>Historial</h4>
                     <hr>
-                    <div><button class="ink-button">Historial por alumno</button></div>
+                    <div><a class="ink-button" href="historial">Hitorial por alumno</a></div>
                 </div>
                 <div id="contenedorProyectos" class="large-33">
-                    <h4>Otros</h4>
+                    <h4>Formularios</h4>
                     <hr>
-                    <div><button class="ink-button">Agregar institución</button></div>
-                    <div><button class="ink-button">Agregar proyecto</button></div>
-                    <div><button class="ink-button">Administrar avisos</button></div>
+                    <div><a class="ink-button" href="institucion">Agregar institución</a></div>
+                    <div><a class="ink-button" href="proyecto">Agregar proyecto</a></div>
+                </div>
+                <div id="contenedorProyectos" class="large-33">
+                    <h4>Documentos</h4>
+                    <hr>
+                    <div><a class="ink-button" href="institucionexcel">Agregar instituciones desde excel</a></div>
+                    <div><a class="ink-button" href="proyectoexcel">Agregar proyecto desde excel</a></div>
+                </div>
+                <div id="contenedorProyectos" class="large-33">
+                    <h4>Avisos</h4>
+                    <hr>
+                    <div><a class="ink-button" href="avisos">Administrar avisos</a></div>
                 </div>
             </div>
         </div>

@@ -67,7 +67,7 @@
 
                                 <?php
                                 echo Form::open(array('url' => '/historial','method' => 'get')) ;
-                                echo Form::text('matricula', 'A00XXXXXX', array('id' => 'matricula', 
+                                echo Form::text('matricula','', array('id' => 'matricula', 'placeholder' => 'A00XXXXXX',
                                     'name' => 'matricula', 'pattern' => '[A|a][0-9]{8}', 'title' => 'La matrícula debe seguir el formato: A00XXXXXX', 'required'));
                                 echo Form::submit('buscar',array('class' => 'ink-button', ));
                                 echo  Form::close() ;

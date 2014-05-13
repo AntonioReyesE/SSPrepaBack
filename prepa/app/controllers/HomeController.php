@@ -55,5 +55,25 @@ class HomeController extends BaseController {
 		return View::make('reportes');
 	}
 
+	public function showInstitucion()
+	{
+		return View::make('institucion');
+	}
+
+	public function showProyecto()
+	{
+		return View::make('proyecto');
+	}
+
+	public function showInsExcel()
+	{
+		return View::make('institucionexcel');
+	}
+
+	public function showProExcel()
+	{
+		return View::make('proyectoexcel');
+	}
+
 
 }

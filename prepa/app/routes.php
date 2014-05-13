@@ -32,6 +32,26 @@ Route::get('/avisos', 'HomeController@showAvisos');
 
 Route::get('/reportes', 'HomeController@showReportes');
 
+Route::get('/institucion', 'HomeController@showInstitucion');
+
+Route::get('/proyecto', 'HomeController@showProyecto');
+
+Route::get('/institucionexcel', 'HomeController@showInsExcel');
+
+Route::get('/proyectoexcel', 'HomeController@showProExcel');
+
+Route::get('/generareporte', 'ReportGenerator@reporteProyectos');
+
+Route::get('/llenarinstituciones', 'ReportUploader@subirInstituciones');
+
+Route::post('/upload', function(){
+     if(Input::hasFile('archivo')) {
+          Input::file('archivo')
+               ->move('/','archivo');
+     }
+     return Redirect::back('/');
+});
+
 Route::post('/registro', function()
 {
         /* Get the login form data using the 'Input' class */
