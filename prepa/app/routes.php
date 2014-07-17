@@ -20,11 +20,11 @@ Route::get('/', 'HomeController@showIndex');
 
 Route::get('/index', 'HomeController@showIndex');
 
-Route::get('/registro', 'HomeController@showRegistro');
+Route::post('/registro', 'HomeController@showRegistro');
 
-Route::get('/inscrito', 'HomeController@inscrito');
+Route::post('/inscrito', 'HomeController@inscrito');
 
-Route::get('/cupolleno', 'HomeController@cupolleno');
+Route::post('/cupolleno', 'HomeController@cupolleno');
 
 Route::get('/historial', 'HomeController@showHistorial');
 
@@ -44,6 +44,37 @@ Route::get('/generareporte', 'ReportGenerator@reporteProyectos');
 
 Route::get('/llenarinstituciones', 'ReportUploader@subirInstituciones');
 
+Route::get('/subirInstitucion', 'ReportUploader@subirInstitucionesFormulario');
+
+/*Ruteo de Proyectos*/
+
+Route::get('/subirProyecto', 'ReportUploader@subirProyectoFormulario');
+
+Route::get('/actualizarproyectos', 'HomeController@actualizarproyectos');
+
+Route::get('/editar', 'HomeController@editarProyecto');
+
+Route::get('/actualizarProyecto', 'ReportUploader@actualizarProyecto');
+
+/*Ruteo para periodos*/
+
+Route::get('/periodos', 'HomeController@periodos');
+
+Route::get('/agregarPeriodo', 'HomeController@periodosNuevo');
+
+Route::get('/agregarPeriodoNuevo', 'ReportUploader@agregarPeriodoNuevo');
+
+Route::get('/actualizarPeriodo', 'HomeController@actualizarPeriodo');
+
+Route::get('/actualizarPeriodoSeleccionado', 'ReportUploader@actualizarPeriodoSeleccionado');
+
+/*ruteo para alumnos*/
+
+Route::get('/alumnos', 'HomeController@alumnos');
+
+Route::get('/eliminarProyecto', 'ReportUploader@eliminarProyecto');
+
+/*Pruebas*/
 Route::post('/upload', function(){
      if(Input::hasFile('archivo')) {
           Input::file('archivo')
@@ -52,7 +83,8 @@ Route::post('/upload', function(){
      return Redirect::back('/');
 });
 
-Route::post('/registro', function()
+
+Route::get('/registro', function()
 {
         /* Get the login form data using the 'Input' class */
       // $password = Input::get('password');

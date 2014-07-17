@@ -60,14 +60,16 @@ class HomeController extends BaseController {
 		return View::make('institucion');
 	}
 
-	public function showProyecto()
-	{
-		return View::make('proyecto');
-	}
-
 	public function showInsExcel()
 	{
 		return View::make('institucionexcel');
+	}
+
+	/*modificación de proyectos*/
+
+	public function showProyecto()
+	{
+		return View::make('proyecto');
 	}
 
 	public function showProExcel()
@@ -75,5 +77,47 @@ class HomeController extends BaseController {
 		return View::make('proyectoexcel');
 	}
 
+	public function actualizarproyectos()
+	{
+		return View::make('actualizarproyectos');
+	}
+
+	public function editarproyecto()
+	{
+		//$proyecto = Input::get('editar');
+		//$proyecto = $_GET['editar'];
+       // Session::push('idProyectos', $proyecto);
+        //print_r($proyecto);
+        
+		return View::make('editarProyecto');
+	}
+
+	/*Periodos*/
+
+	public function periodos()
+	{
+	
+		return View::make('periodos');
+	}
+
+	public function periodosNuevo()
+	{
+	
+		return View::make('agregarPeriodo');
+	}
+
+	public function actualizarPeriodo()
+	{
+	
+		return View::make('actualizarPeriodo');
+	}
+
+	/*Alumnos*/
+
+	public function alumnos()
+	{
+	
+		return View::make('alumnos');
+	}
 
 }

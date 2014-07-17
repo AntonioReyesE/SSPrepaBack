@@ -57,7 +57,7 @@
                     <h4>Registro exitoso</h4>
                     <hr>
                     <p>Te has inscrito exitosamente al proyecto, se ha enviado un correo a tu correo electrónico institucional con la información de tu registro al proyecto.</p>
-                    <p>Da <a href="index">click aquí</a> para regresar</p>
+                    <p>Da <a href="index">click aquí</a> para Salir</p>
                 </div>
             </div>
         </div>

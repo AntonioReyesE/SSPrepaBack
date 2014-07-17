@@ -48,54 +48,85 @@
                 <div id="contenedor" class="large-75 small-100 push-center">
                     <h4>Agregar institución</h4>
                     <div class="large-100" style="padding:1em;">
-                        <form action="#" class="ink-form">
+                        <form action="subirInstitucion" class="ink-form" method="GET">
                             <fieldset class="column-group gutters">
                                 <div class="control-group large-33 medium-33 small-100">
                                     <label for="nombre">Nombre de la institución</label>
                                     <div class="control">
-                                        <input type="text" id="nombre">
+                                        <?php
+                                            echo Form::text('nombre', '', array('required'));
+                                        ?>
                                     </div>
                                 </div>
                                 <div class="control-group large-33 medium-33 small-100">
                                     <label for="contacto">Contacto</label>
                                     <div class="control">
-                                        <input type="text" id="contacto">
+                                        <?php
+                                            echo Form::text('contacto', '', array('required'));
+                                        ?>
+                                        
                                     </div>
                                 </div>
                                 <div class="control-group large-33 medium-33 small-100">
                                     <label for="telefono">Teléfono</label>
                                     <div class="control">
-                                        <input type="tel" id="telefono">
+                                        <?php
+                                            echo Form::text('telefono', '', array('type' => 'tel', 'required'));
+                                        ?>
                                     </div>
                                 </div>
                                 <div class="control-group large-33 medium-33 small-100">
                                     <label for="direccion">Dirección</label>
                                     <div class="control">
-                                        <input type="text" id="direccion">
+                                        <?php
+                                            echo Form::text('direccion', '', array('required'));
+                                        ?>
+                                        
                                     </div>
                                 </div>
                                 <div class="control-group large-33 medium-33 small-100">
                                     <label for="correo">Correo</label>
                                     <div class="control">
-                                        <input type="email" id="correo">
+                                        <?php
+                                            echo Form::email('correo', '', array('type' => 'email', 'required'));
+                                        ?>
+                    
                                     </div>
                                 </div>
                                 <div class="control-group large-33 medium-33 small-100">
                                     <label for="pagina">Página web</label>
                                     <div class="control">
-                                        <input type="url" id="pagina">
+                                        <?php
+                                            echo Form::url('pagina', '', array('type' => 'url'));
+                                        ?>
+                                        
+                                    </div>
+                                </div>
+                                 <div class="control-group large-33 medium-33 small-100">
+                                    <label for="mapa">Link de Google maps</label>
+                                    <div class="control">
+                                        <?php
+                                            echo Form::url('mapa', '', array('type' => 'url'));
+                                        ?>
+                                        
                                     </div>
                                 </div>
                                 <div class="control-group large-33 medium-33 small-100">
                                     <label for="facebook">Facebook</label>
                                     <div class="control">
-                                        <input type="url" id="facebook">
+                                        <?php
+                                            echo Form::text('facebook', '', array('type' => 'url'));
+                                        ?>
                                     </div>
                                 </div>
                                 <div class="control-group large-33 medium-33 small-100 push-right">
-                                    <label for="facebook">&nbsp;</label>
+                                    <label for="submit">&nbsp;</label>
                                     <div class="control">
-                                        <button class="ink-button green push-right">Guardar</button>
+                                        <?php
+                                            echo Form::submit('Guardar', array('class' => 'ink-button green push-right'));
+
+                                        ?>
+                                        
                                     </div>
                                 </div>
                             </fieldset>

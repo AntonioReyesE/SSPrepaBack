@@ -7,7 +7,7 @@
         <title>
             Servicio Social
         </title>
-        <meta name="description" content="Portal de Servicio Social, PrepaTec">
+        <meta name="description" content="Servicio Social, PrepaTec">
         <meta name="HandheldFriendly" content="True">
         <meta name="MobileOptimized" content="320">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
@@ -32,7 +32,7 @@
             <nav class="ink-navigation">
                 <ul class="menu horizontal blue">
                     <li>
-                        <a href="index">Portal de Servicio Social</a>
+                        <a href="index">Registro Servicio Social</a>
                     </li>
                 </ul>
             </nav>
@@ -40,56 +40,30 @@
         <div id="contenedor" class="ink-grid">
             <div class="column-group">
                 <div id="contenedorLogin" class="large-25 medium-25 small-100">
-                    <form class="ink-form">
+                    
+                    <form class="ink-form" action="registro" method="post">
                         <fieldset>
                             <h4>Ingresar al portal</h4>
                             <hr>
                             <div class="control-group">
                                 <label for="text-input">Matrícula</label> 
                                 <div class="control">
-                                    <!-- Agregados para funciones de php de validación de matricula-->
-                                    <?php
-                                    echo Form::open(array('url' => '/registro','method' => 'get')) ;
-                                    echo Form::text('matricula', '', array('id' => 'matricula', 'placeholder' => 'A00XXXXXX',
-                                        'name' => 'matricula', 'pattern' => '[A|a][0-9]{8}', 'title' => 'La matrícula debe seguir el formato: A00XXXXXX', 'required'));
-                                    echo  Form::close() ;
-                                    ?>
-
+                                    <input id="matricula" name="matricula" pattern="[A|a][0-9]{8}" title="La matrícula debe seguir el formato: A00XXXXXX" type="text" required>
                                 </div>
                             </div>
                             <div class="control-group">
                                 <label for="text-input">Contraseña</label> 
                                 <div class="control">
-                                    <!-- Agregados para funciones de php de validación de password-->
-                               
-                                    <?php 
-                                    echo Form::open(array('url' => '/registro','method' => 'post')) ;
-                                    echo Form::password('password', array('id' => 'password', 
-                                        'name' => 'password', 'pattern' => '^.{6,}', 'title' => 'La contraseña debe contener al menos 6 caracteres', 'required'));
-                                    echo  Form::close() ;
-                                    ?>
+                                    <input id="contraseña" name="contraseña" pattern="^.{6,}" title="La contraseña debe contener al menos 6 caracteres" type="text" required>
                                 </div>
                             </div>
                             <div class="control-group push-right">
-
-                                <?php 
-                                $matricula = '';
-                                $password = '';
-                                if (Input::has('matricula') || Input::has('password')) {
-                                    $matricula = Input::get('matricula');
-                                    $password = Input::get('password');
-                                    
-                                }
-                                
-                               // echo Form::open(array('url' => array('registro', $matricula)));
-                                    
-                                echo Form::open(array('url' => '/registro','method' => 'post')) ;
-                                    echo Form::submit('Iniciar sesión', array('url' => 'registro','id' => 'botonLogin', 'class' => 'ink-button blue'));
-                                echo  Form::close() ;
-                                ?>,
+                                <button id="botonLogin" class="ink-button blue">Iniciar sesión</button>
                             </div>
                         </fieldset>
                     </form>
+
+                    
                 </div>
                 <div id="contenedorAvisos" class="large-75 medium-75 small-100">
                     <div id="myCarousel" class="ink-carousel" data-auto-advance="5000" data-axix="x" data-initial-page="0" data-pagination="#carouselNav" data-swipe="true">
@@ -121,6 +95,8 @@
             <div class="column-group">
                 <div id="contenedorContacto" class="large-25 medium-25 small-100">
                     Contacto
+                    <hr>
+                    Lic. Paulina Pedrero
                 </div>
                 <div id="contenedorAsociaciones" class="large-75 medium-75 small-100">
                     <div id="myCarousel" class="ink-carousel" data-auto-advance="5000" data-axix="x" data-initial-page="0" data-pagination="#asociacionesNav" data-swipe="true">

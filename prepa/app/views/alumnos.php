@@ -37,16 +37,14 @@
                     <li class="push-right">
                         <a href="index"><i class="icon-signout"></i> Cerrar sesión</a>
                     </li>
-                    <li class="push-right">
-                        <a href="historial">Historial</a>
-                    </li>
+                    
                 </ul>
             </nav>
         </header>
         <div id="contenedor" class="ink-grid">
             <div class="column-group">
                 <div id="contenedorProyectos" class="large-100">
-                    <h4>Historial</h4>
+                    <h4>Alumnos</h4>
                     <form class="ink-form">
                         <div class="control-group">
                             <div class="column-group gutters">
@@ -73,19 +71,7 @@
                                 echo  Form::close() ;
                                 ?>
                                 </div>
-                                <div class="control large-25 push-right content-right">
-
-                                    <?php
-                                    /*
-                                        Boton de descargar
-                                    */
-                                        echo Form::open(array('url' => '/historial', 'method' => 'get'));
-                                        echo Form::submit('descargar', array('class' => 'ink-button'));
-                                        echo Form::close();
-                                    ?>
-
-
-                                </div>
+       
                             </div>
                         </div>
                     </form>
@@ -113,6 +99,7 @@
                                     <th class="content-left">Fecha Fin</th>
                                     <th class="content-left">Horas</th>
                                     <th class="content-left">Estatus</th>
+                                    <th class="content-left">Eliminar</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -123,7 +110,7 @@
                                 */
                                     $matricula = Input::get('matricula');
                                     if (Input::has('matricula')) {
-                                        dbprepa::printHistorialProyectos($matricula);
+                                        dbprepa::actualizarProyectoAlumno($matricula);
                 
                                     }
                                     

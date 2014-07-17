@@ -9,10 +9,11 @@ USE `SSPrepa` ;
 -- Table `SSPrepa`.`Institucion`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `SSPrepa`.`Institucion` (
-  `idInstitucion` INT NOT NULL,
-  `nombre` VARCHAR(45) NULL,
+  `idInstitucion` INT NOT NULL AUTO_INCREMENT,
+  `nombreInst` VARCHAR(45) NULL,
   `contacto` VARCHAR(45) NULL,
   `telefono` INT NULL,
+  `extension` VARCHAR(5) NULL,
   `direccion` VARCHAR(45) NULL,
   `correo` VARCHAR(45) NULL,
   `mapa` VARCHAR(45) NULL,
@@ -23,22 +24,40 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
+-- Table `SSPrepa`.`Periodos`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `SSPrepa`.`Periodos` (
+  `idPeriodos` INT NOT NULL AUTO_INCREMENT,
+  `periodo` VARCHAR(45) NULL,
+  `fechaInicio` DATE NULL,
+  `fechaFin` DATE NULL,
+  PRIMARY KEY (`idPeriodos`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
 -- Table `SSPrepa`.`Proyectos`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `SSPrepa`.`Proyectos` (
-  `idProyectos` INT NOT NULL,
+  `idProyectos` INT NOT NULL AUTO_INCREMENT,
   `idInstitucionfk` INT NOT NULL,
-  `nombre` VARCHAR(45) NULL,
-  `fechaInicio` DATE NULL,
-  `fechaFin` DATE NULL,
+  `idPeriodosfk` INT NOT NULL,
+  `nombreProy` VARCHAR(45) NULL,
   `cupo` INT NULL,
   `contacto` VARCHAR(45) NULL,
   `descripcion` VARCHAR(45) NULL,
-  PRIMARY KEY (`idProyectos`),
+  `horas` INT NULL,
+  PRIMARY KEY (`idProyectos`, `idPeriodosfk`),
   INDEX `fk_Proyectos_Institucion_idx` (`idInstitucionfk` ASC),
+  INDEX `fk_Proyectos_Periodos1_idx` (`idPeriodosfk` ASC),
   CONSTRAINT `fk_Proyectos_Institucion`
     FOREIGN KEY (`idInstitucionfk`)
     REFERENCES `SSPrepa`.`Institucion` (`idInstitucion`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_Proyectos_Periodos1`
+    FOREIGN KEY (`idPeriodosfk`)
+    REFERENCES `SSPrepa`.`Periodos` (`idPeriodos`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -49,10 +68,10 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `SSPrepa`.`Alumno` (
   `matricula` VARCHAR(9) NOT NULL,
-  `password` VARCHAR(45) NOT NULL,
   `nombre` VARCHAR(45) NULL,
-  `semestre` VARCHAR(45) NULL,
+  `semestre` INT NULL,
   `correo` VARCHAR(45) NULL,
+  `telefono` VARCHAR(10) NULL,
   PRIMARY KEY (`matricula`))
 ENGINE = InnoDB;
 
@@ -113,12 +132,14 @@ CREATE TABLE IF NOT EXISTS `SSPrepa`.`Profesor` (
 ENGINE = InnoDB;
 
 
+
 -- -----------------------------------------------------
 -- Table `SSPrepa`.`Horario`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `SSPrepa`.`Horario` (
   `nominaProfesorfk` VARCHAR(9) NOT NULL,
-  `dias` VARCHAR(45) NULL,
+  `dia` VARCHAR(45) NULL,
+  `hora` VARCHAR(45) NULL,
   PRIMARY KEY (`nominaProfesorfk`),
   INDEX `fk_Horario_Profesor1_idx` (`nominaProfesorfk` ASC),
   CONSTRAINT `fk_Horario_Profesor1`
@@ -225,6 +246,19 @@ CREATE TABLE IF NOT EXISTS `SSPrepa`.`Imagenes` (
     REFERENCES `SSPrepa`.`Bitacora` (`idBitacora` , `matriculaAlumnofk`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `SSPrepa`.`Admin`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `SSPrepa`.`Admin` (
+  `idAdmin` INT NOT NULL,
+  `nombre` VARCHAR(45) NULL,
+  `password` VARCHAR(45) NULL,
+  `telefono` VARCHAR(45) NULL,
+  `correo` VARCHAR(45) NULL,
+  PRIMARY KEY (`idAdmin`))
 ENGINE = InnoDB;
 
 

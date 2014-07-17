@@ -49,7 +49,7 @@
                     <h4>Cupo lleno</h4>
                     <hr>
                     <p>El proyecto que has elegido no tiene más lugares para poder inscribirlo.</p>
-                    <p>Da <a href="index">click aquí</a> para regresar</p>
+                    <p>Da <a href="registro">click aquí</a> para regresar</p>
                 </div>
             </div>
         </div>

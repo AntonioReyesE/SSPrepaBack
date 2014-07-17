@@ -32,13 +32,13 @@
             <nav class="ink-navigation">
                 <ul class="menu horizontal blue">
                     <li>
-                        <a href="index.html">Portal de Servicio Social</a>
+                        <a href="index">Registro de Servicio Social</a>
                     </li>
                     <li class="push-right">
-                        <a href="index.html"><i class="icon-signout"></i> Cerrar sesión</a>
+                        <a href="index"><i class="icon-signout"></i> Cerrar sesión</a>
                     </li>
                     <li class="push-right">
-                        <a href="historial.html">Historial</a>
+                        <a href="historial">Historial</a>
                     </li>
                 </ul>
             </nav>

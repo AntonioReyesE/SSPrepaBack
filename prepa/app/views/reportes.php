@@ -24,7 +24,6 @@
         <script type="text/javascript" src="packages/js/ink-ui.min.js"></script>
         <script type="text/javascript" src="packages/js/autoload.js"></script>
         <script type="text/javascript" src="packages/js/html5shiv.js"></script>        
-
     </head>
     
     <body>
@@ -32,7 +31,7 @@
             <nav class="ink-navigation">
                 <ul class="menu horizontal blue">
                     <li>
-                        <a href="index">Portal de Servicio Social</a>
+                        <a href="index">Registro de Servicio Social</a>
                     </li>
                     <li class="push-right">
                         <a href="index"><i class="icon-signout"></i> Cerrar sesión</a>
@@ -47,18 +46,23 @@
                     <hr>
                     <div>
                         <label>Periodo: </label>
-                        <select>
-                            <option>Todos los periodos</option>
-                            <option>ENE-MAY 2014</option>
-                            <option>AGO-DIC 2013</option>
-                        </select>
+                        <?php
+
+                                        $periodos = DB::table('Periodos')->select('idPeriodos')->get();
+                                       $periodos2 = DB::table('Periodos')->select('periodo')->get();
+                                        $arreglo = array();
+                                        for ($i=0; $i < count($periodos); $i++) { 
+                                            $arreglo[$periodos[$i]->idPeriodos] = $periodos2[$i]->periodo;
+                                        }
+                                        echo Form::select('idPeriodosfk',$arreglo);
+                                        ?>
                         <a href="generareporte" class="ink-button">Generar</a>
                     </div>
                 </div>
                 <div id="contenedorProyectos" class="large-33">
                     <h4>Historial</h4>
                     <hr>
-                    <div><a class="ink-button" href="historial">Hitorial por alumno</a></div>
+                    <div><a class="ink-button" href="historial">Historial por alumno</a></div>
                 </div>
                 <div id="contenedorProyectos" class="large-33">
                     <h4>Formularios</h4>
@@ -69,16 +73,30 @@
                 <div id="contenedorProyectos" class="large-33">
                     <h4>Documentos</h4>
                     <hr>
-                    <div><a class="ink-button" href="institucionexcel">Agregar instituciones desde excel</a></div>
-                    <div><a class="ink-button" href="proyectoexcel">Agregar proyecto desde excel</a></div>
+                    <div><a class="ink-button" href="institucionexcel">Carga masiva de instituciones</a></div>
+                    <div><a class="ink-button" href="proyectoexcel">Carga masiva de proyectos</a></div>
                 </div>
                 <div id="contenedorProyectos" class="large-33">
                     <h4>Avisos</h4>
                     <hr>
                     <div><a class="ink-button" href="avisos">Administrar avisos</a></div>
                 </div>
+                <div id="contenedorProyectos" class="large-33">
+                    <h4>Alumnos</h4>
+                    <hr>
+                    <div><a class="ink-button" href="alumnos">Administrar Alumnos</a></div>
+                </div>
+                <div id="contenedorProyectos" class="large-33">
+                    <h4>Periodos</h4>
+                    <hr>
+                    <div><a class="ink-button" href="periodos">Administrar Periodos</a></div>
+                </div>
+                <div id="contenedorProyectos" class="large-33">
+                    <h4>Proyectos</h4>
+                    <hr>
+                    <div><a class="ink-button" href="actualizarproyectos">Editar Proyectos</a></div>
+                </div>
             </div>
         </div>
     </body>
-
 </html>

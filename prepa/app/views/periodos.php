@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="es">
     
@@ -38,40 +37,39 @@
                     <li class="push-right">
                         <a href="index"><i class="icon-signout"></i> Cerrar sesión</a>
                     </li>
-                    <li class="push-right">
-                        <a href="historial">Historial</a>
-                    </li>
                 </ul>
             </nav>
         </header>
         <div id="contenedor" class="ink-grid">
             <div class="column-group">
-                <div id="contenedorProyectos" class="large-100">
-                    <h4>Registro de proyecto</h4>
-                    <hr>
-                    <table class="ink-table bordered alternating hover" style="font-size:14px">
-                        <thead>
-                            <tr>
-                                <th class="content-left">Proyecto</th>
-                                <th class="content-left">Institución</th>
-                                <th class="content-left">Descripción</th>
-                                <th class="content-left">Disponibilidad</th>
-                                <th class="content-left">Horas</th>
-                                <th class="content-left">Inscripción</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                             <?php
-                                $matricula = Input::get('matricula');
-                             Session::push('matricula', $matricula);
+                <h1>Periodos</h1>
+                <div>
+                     <div class="large-100" style="padding-top:1em;">
+                        <table class="ink-table bordered alternating hover" style="font-size:14px;">
+                            <thead>
+                                <tr>
+                                    <th class="content-left">Periodo</th>
+                                    <th class="content-left">Fecha Inicio</th>
+                                    <th class="content-left">Fecha Fin</th>
+                                    <th class="content-left">Editar</th>
+                                </tr>
+                            </thead>
+                            <tbody>
 
-                            dbprepa::printTabla();
-                            ?>
-                        </tbody>
-                    </table>
-                </div>
+                                 <?php
+                                /*
+                                    Campo que imprime todos los periodos disponibles
+                                */
+                                    
+                                        dbprepa::printPeriodos();
+        
+                                ?>
+                            </tbody>
+                        </table>
+                        <a type="submit" class="ink-button" href="agregarPeriodo" name="agregar" value="agregar">Agregar un periodo</a></td>
+                    </div>
+                </div>  
             </div>
         </div>
     </body>
-
 </html>

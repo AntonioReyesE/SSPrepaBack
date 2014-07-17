@@ -32,13 +32,13 @@
             <nav class="ink-navigation">
                 <ul class="menu horizontal blue">
                     <li>
-                        <a href="index.html">Portal de Servicio Social</a>
+                        <a href="index">Registro de Servicio Social</a>
                     </li>
                     <li class="push-right">
-                        <a href="index.html"><i class="icon-signout"></i> Cerrar sesión</a>
+                        <a href="index"><i class="icon-signout"></i> Cerrar sesión</a>
                     </li>
                     <li class="push-right">
-                        <a href="historial.html">Historial</a>
+                        <a href="historial">Historial</a>
                     </li>
                 </ul>
             </nav>
@@ -48,63 +48,94 @@
                 <div id="contenedor" class="large-75 small-100 push-center">
                     <h4>Agregar proyecto</h4>
                     <div class="large-100" style="padding:1em;">
-                        <form action="#" class="ink-form">
+                        <form action="subirProyecto" class="ink-form">
                             <fieldset class="column-group gutters">
                                 <div class="control-group large-33 medium-33 small-100">
                                     <label for="nombre">Nombre de institucion</label>
                                     <div class="control">
-                                        <select required>
-                                            <option value="nombre1">Institución 1</option>
-                                            <option value="nombre2">Institución 2</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="control-group large-33 medium-33 small-100">
-                                    <label for="inicio">Inicio</label>
-                                    <div class="control">
-                                        <input type="date" id="inicio" required>
-                                    </div>
-                                </div>
-                                <div class="control-group large-33 medium-33 small-100">
-                                    <label for="fin">Fin</label>
-                                    <div class="control">
-                                        <input type="date" id="fin" required>
+                                        <?php
+
+                                        $instituciones = DB::table('Institucion')->select('idInstitucion')->get();
+                                        $instituciones2 = DB::table('Institucion')->select('nombreInst')->get();
+                                        $arreglo = array();
+                                        for ($i=0; $i < count($instituciones); $i++) { 
+                                            $arreglo[$instituciones[$i]->idInstitucion] = $instituciones2[$i]->nombreInst;
+                                        }
+                                        echo Form::select('idInstitucionfk',$arreglo);
+                                        ?>
+
                                     </div>
                                 </div>
                                 <div class="control-group large-33 medium-33 small-100">
                                     <label for="cupo">Cupo</label>
                                     <div class="control">
-                                        <input type="number" id="cupo" required>
+                                        <?php
+                                            echo Form::text('cupo', '', array('type' => 'number' ,'required'));
+                                        ?>
+                                        
                                     </div>
                                 </div>
-                                <div class="control-group large-33 medium-33 small-100">
-                                    <label for="correo">Correo</label>
-                                    <div class="control">
-                                        <input type="email" id="correo">
-                                    </div>
-                                </div>
+                               
                                 <div class="control-group large-33 medium-33 small-100">
                                     <label for="contacto">Contacto</label>
                                     <div class="control">
-                                        <input type="text" id="contacto">
+                                        <?php
+                                            echo Form::text('contacto', '', array('required'));
+                                        ?>
+                                        
+                                    </div>
+                                </div>
+                                <div class="control-group large-33 medium-33 small-100">
+                                    <label for="nombreProy">Nombre</label>
+                                    <div class="control">
+                                        <?php
+                                            echo Form::text('nombreProy', '', array('required'));
+                                        ?>
+                                        
                                     </div>
                                 </div>
                                 <div class="control-group large-33 medium-33 small-100">
                                     <label for="descripcion">Descripción</label>
                                     <div class="control">
-                                        <input type="text" id="descripcion" required>
+                                        <?php
+                                            echo Form::text('descripcion', '', array('required'));
+                                        ?>
+                                        
+                                    </div>
+                                </div>
+                                <div class="control-group large-33 medium-33 small-100">
+                                    <label for="descripcion">Horas</label>
+                                    <div class="control">
+                                        <?php
+                                            echo Form::text('horas', '', array('type' => 'number' ,'required'));
+                                        ?>
+                                        
                                     </div>
                                 </div>
                                 <div class="control-group large-33 medium-33 small-100">
                                     <label for="periodo">Periodo</label>
                                     <div class="control">
-                                        <input type="text" id="periodo" required>
+                                        <?php
+
+                                        $periodos = DB::table('Periodos')->select('idPeriodos')->get();
+                                       $periodos2 = DB::table('Periodos')->select('periodo')->get();
+                                        $arreglo = array();
+                                        for ($i=0; $i < count($periodos); $i++) { 
+                                            $arreglo[$periodos[$i]->idPeriodos] = $periodos2[$i]->periodo;
+                                        }
+                                        echo Form::select('idPeriodosfk',$arreglo);
+                                        ?>
+                                       
                                     </div>
                                 </div>
                                 <div class="control-group large-33 medium-33 small-100 push-right">
                                     <label>&nbsp;</label>
                                     <div class="control">
-                                        <input type="submit" class="ink-button" value="Guardar">
+                                        <?php
+                                            echo Form::submit('Guardar', array('class' => 'ink-button'));
+
+                                        ?>
+                                       
                                     </div>
                                 </div>
                             </fieldset>
